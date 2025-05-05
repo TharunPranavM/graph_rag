@@ -35,8 +35,11 @@ os.environ["NEO4J_URI"] = os.getenv("NEO4J_URI")
 os.environ["NEO4J_PASSWORD"] = os.getenv("NEO4J_PASSWORD")  
 graph = Neo4jGraph()
 
+
+# User Query
+query = input("Enter the Wikipedia topic (e.g., KL Rahul): ")
 # Read the wikipedia article
-raw_documents = WikipediaLoader(query="KL Rahul").load()
+raw_documents = WikipediaLoader(query=query).load()
 # Define chunking strategy
 text_splitter = TokenTextSplitter(chunk_size=512, chunk_overlap=24)
 documents = text_splitter.split_documents(raw_documents[:3])
